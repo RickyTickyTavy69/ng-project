@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `<ng-container>
-    This is the game
+    <div class="text-red-600">
+      This is the game
+    </div>
   </ng-container>`
 })
 export class GameComponent {
