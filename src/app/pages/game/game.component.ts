@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {TelegramService} from "../../services/telegram.service";
 
 @Component({
   selector: 'app-game',
@@ -11,5 +12,8 @@ import { Component } from '@angular/core';
   </ng-container>`
 })
 export class GameComponent {
-
+  telegram = inject(TelegramService);
+  constructor() {
+    this.telegram.MainButton.show();
+  }
 }
