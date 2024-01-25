@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import {TelegramService} from "./services/telegram.service";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
   imports: [CommonModule, RouterOutlet],
   template: `
     <div>
-      I am a cat play with me please!
+      I am a cat play with me please <3
     </div>
     <div>
       <router-outlet/>
@@ -17,5 +18,8 @@ import { RouterOutlet } from '@angular/router';
   `,
 })
 export class AppComponent {
-
+  telegram = inject(TelegramService);
+  constructor() {
+    this.telegram.MainButton.show();
+  }
 }
