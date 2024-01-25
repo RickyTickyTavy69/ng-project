@@ -1,4 +1,8 @@
 /* global styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body{
   background: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
