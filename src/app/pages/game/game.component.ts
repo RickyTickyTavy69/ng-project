@@ -306,7 +306,7 @@ export class GameComponent implements OnInit {
             }
           });
           this.cardsCompleted += 2;
-          if(this.cardsCompleted === cards.length){
+          if(this.cardsCompleted === cards.length -1){
             this.timerStop = true;
           }
       } else {

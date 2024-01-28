@@ -3,7 +3,7 @@
     <app-timer [timerStop]="timerStop"/>
   </div>
   <section class="flex justify-center">
-    <div class="grid-rows-3 grid-cols-5 grid gap-6 w-[640px]">
+    <div class="grid-rows-3 grid-cols-5 grid gap-6">
       @for(card of cards; track card){
         <app-flip-card [cardId]="card.id" [frontImage]="card.frontImage" [type]="card.type" [cardsFlipped]="cardsFlipped"
                        [addFlippedCard]="addFlippedCard" [removeFlippedCard]="removeFlippedCard"
