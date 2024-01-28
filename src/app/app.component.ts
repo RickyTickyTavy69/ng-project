@@ -8,12 +8,13 @@ import {TelegramService} from "./services/telegram.service";
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   template: `
-    <div>
+    <div class="max-w-2xl mx-auto flex-col items-center justify-center">
       I am a cat play with me please <3
+      <div>
+        <router-outlet/>
+      </div>
     </div>
-    <div>
-      <router-outlet/>
-    </div>
+
 
   `,
 })

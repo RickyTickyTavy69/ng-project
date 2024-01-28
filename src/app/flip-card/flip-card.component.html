@@ -1,0 +1,18 @@
+<div class="container">
+  <div (click)="toggle()" [ngClass]="{'flipped' : (toggled || completed), 'placeholder': placeholder }"
+       class="card">
+
+      <div (click)="toggle()" class="front">
+        <ng-content select="flip-card-front">
+        </ng-content>
+          <img (click)="toggle()" class="arrow-icon"  [ngSrc]="blink? 'assets/cardImages/savannah_blink.png': 'assets/cardImages/savannah.png'" height="50" width="50"/>
+      </div>
+
+      <div (click)="toggle()" class="back">
+        <ng-content select="flip-card-back">
+        </ng-content>
+        <img (click)="toggle()" class="arrow-icon" [ngSrc]="completed? frontImageComp: frontImage" height="50" width="50"/>
+      </div>
+
+  </div>
+</div>
