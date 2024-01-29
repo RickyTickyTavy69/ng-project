@@ -276,7 +276,9 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-   this.telegram.BackButton.offClick(this.goBack);
+    this.telegram.BackButton.hide();
+    this.telegram.BackButton.offClick(this.goBack);
+    this.unToggleAllCards();
   }
 
   startTimer(){
@@ -290,6 +292,10 @@ export class GameComponent implements OnInit, OnDestroy {
       array[i] = array[j];
       array[j] = temp;
     }
+  }
+
+  startGame(){
+
   }
   addFlippedCard(){
     this.cardsFlipped = this.cardsFlipped + 1;
