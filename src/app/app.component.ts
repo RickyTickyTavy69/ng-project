@@ -18,8 +18,7 @@ import {TelegramService} from "./services/telegram.service";
   `,
 })
 export class AppComponent {
-  telegram = inject(TelegramService);
-  constructor() {
-    this.telegram.MainButton.show();
+  constructor(private telegram : TelegramService) {
+    this.telegram.ready();
   }
 }

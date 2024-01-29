@@ -1,7 +1,9 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {TelegramService} from "../../services/telegram.service";
 import {FlipCardModule} from "../../flip-card/flip-card.module";
 import {TimerModule} from "../../components/timer/timer.module";
+import {ButtonComponent} from "../../components/button/button.component";
+import {Router} from "@angular/router";
 
 const cards = [
   {
@@ -241,26 +243,44 @@ const cards = [
   imports: [
     FlipCardModule,
     TimerModule,
+    ButtonComponent,
   ],
   templateUrl: "game.component.html"
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
   telegram = inject(TelegramService);
   cards;
   cardsFlipped: any;
   cardsCompleted: any;
   timerStop: boolean;
-  constructor() {
-    this.telegram.MainButton.show();
+
+  constructor(
+    private router: Router
+  ) {
     this.cards = cards;
     this.cardsFlipped = 0;
     this.cardsCompleted = 0;
-    this.timerStop = false;
+    this.timerStop = true;
+    this.goBack = this.goBack.bind(this);
   }
   flippedCardId: number = -1;
 
+  goBack(){
+    this.router.navigate(['']);
+  }
+
   ngOnInit() {
     this.shuffleArray(this.cards);
+    this.telegram.BackButton.show();
+    this.telegram.BackButton.onClick(this.goBack);
+  }
+
+  ngOnDestroy() {
+   this.telegram.BackButton.offClick(this.goBack);
+  }
+
+  startTimer(){
+    this.timerStop = false;
   }
 
   shuffleArray(array){
