@@ -7,6 +7,8 @@ interface TgButton{
   setText(text: string): void;
   onClick(fn: Function): void;
   offClick(fn: Function): void;
+  enable(): void;
+  disable(): void;
 }
 
 @Injectable({

@@ -19,15 +19,22 @@ export class ContactComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.telegram.MainButton.setText("Отправить сообщение");
     this.telegram.MainButton.show();
-    this.telegram.MainButton.onClick(this.sendData)
+    this.telegram.MainButton.disable();
+    this.telegram.MainButton.onClick(this.sendData);
   }
 
   handleChange($event: any) {
     console.log($event.target.id)
     // this.name.set($event.target.value)
     this[$event.target.id].set($event.target.value);
+    if(this.name && this.email && this.message){
+      this.telegram.MainButton.enable();
+    } else {
+      this.telegram.MainButton.disable();
+    }
   }
 
+  // works only if the app started using a keyboard button.
   private sendData() {
     console.log("data", this.name, this.email, this.message);
     // this.telegram.sendData({name: this.name, email: this.email, message: this.message})
