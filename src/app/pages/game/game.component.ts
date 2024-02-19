@@ -252,7 +252,7 @@ export class GameComponent implements OnInit, OnDestroy {
   cards;
   cardsFlipped: any;
   cardsCompleted: any;
-  timerStop: boolean;
+  activated: boolean;
 
   constructor(
     private router: Router
@@ -260,7 +260,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.cards = cards;
     this.cardsFlipped = 0;
     this.cardsCompleted = 0;
-    this.timerStop = true;
+    this.activated = false;
     this.goBack = this.goBack.bind(this);
   }
   flippedCardId: number = -1;
@@ -281,8 +281,8 @@ export class GameComponent implements OnInit, OnDestroy {
     this.unToggleAllCards();
   }
 
-  startTimer(){
-    this.timerStop = false;
+  activate(){
+    this.activated = true;
   }
 
   shuffleArray(array){
@@ -294,9 +294,6 @@ export class GameComponent implements OnInit, OnDestroy {
     }
   }
 
-  startGame(){
-
-  }
   addFlippedCard(){
     this.cardsFlipped = this.cardsFlipped + 1;
   }
@@ -321,6 +318,9 @@ export class GameComponent implements OnInit, OnDestroy {
     // console.log("clicked cardId", id);
     this.addFlippedCard();
     this.editCardsData(id)
+    if(!this.activated){
+      this.activate();
+    }
 
     if(this.cardsFlipped === 2) {
       const toggledCards = this.cards.filter((card) => card.toggled);
@@ -333,7 +333,7 @@ export class GameComponent implements OnInit, OnDestroy {
           });
           this.cardsCompleted += 2;
           if(this.cardsCompleted === cards.length -1){
-            this.timerStop = true;
+            this.activated = false;
           }
       } else {
         setTimeout(() => {

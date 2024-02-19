@@ -4,7 +4,7 @@ import {DOCUMENT} from "@angular/common";
 interface TgButton{
   show(): void;
   hide: () => void;
-  setText(): void;
+  setText(text: string): void;
   onClick(fn: Function): void;
   offClick(fn: Function): void;
 }
@@ -26,6 +26,10 @@ export class TelegramService {
 
   get BackButton() : TgButton {
     return this.tg.BackButton;
+  }
+
+  sendData(data: object){
+    this.tg.sendData(JSON.stringify(data));
   }
 
   ready(){

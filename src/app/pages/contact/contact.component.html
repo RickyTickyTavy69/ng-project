@@ -1,0 +1,20 @@
+<div class="container max-w-2xl flex-col mx-auto items-center justify-center mt-20">
+  <form action="">
+    <div class="mt-6 flex flex-col items-center justify-between">
+      <label for="name">Name:</label>
+      <input (input)="handleChange($event)" class="focus:outline-0 focus:border-orange-500 border-2 rounded-lg px-4 py-2" id="name" name="name" type="text" [value]="name()">
+    </div>
+    <div class="mt-6 flex flex-col items-center justify-between">
+      <label for="email">Email:</label>
+      <input (input)="handleChange($event)" class=" focus:outline-0 focus:border-orange-500 border-2 rounded-lg px-4 py-2" id="email" name="email" type="text" [value]="email()">
+    </div>
+    <div class="mt-6 flex flex-col items-center justify-between">
+      <label for="message">Message:</label>
+      <textarea (input)="handleChange($event)" class=" focus:outline-0 focus:border-orange-500 border-2 rounded-lg px-4 py-2" id="message" name="message" [value]="message()"></textarea>
+    </div>
+    <div class="mt-6 flex flex-col items-center justify-between">
+      <button class="border-orange-500 border-2 rounded-lg px-4 py-2">Et Voila</button>
+    </div>
+    <h1>Result</h1>
+  </form>
+</div>

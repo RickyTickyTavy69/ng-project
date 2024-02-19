@@ -6,10 +6,10 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TimerComponent implements OnInit {
   seconds = 0;
-  @Input() timerStop: boolean;
+  @Input() activated: boolean;
   ngOnInit(){
       setInterval(() => {
-        if(!this.timerStop){
+        if(this.activated){
           this.addSecond();
         }
       }, 1000);
